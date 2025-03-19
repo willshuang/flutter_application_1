@@ -1,5 +1,51 @@
 import 'package:flutter/material.dart';
 
+class WillsWomenPage extends StatelessWidget {
+  const WillsWomenPage({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: const Text(
+          'LATIV 女裝',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search, color: Colors.black),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.shopping_bag_outlined, color: Colors.black),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: const SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // 顶部横幅
+            Text('顶部横幅'),
+            // 分类导航
+            Text('分类导航'),
+            // 热门推荐
+            Text('熱門推薦'),
+            // 新品上市
+            Text('新品上市'),
+            // 特价商品
+            Text('特價商品'),
+          ],
+        ),
+      ),
+      bottomNavigationBar: const BottomNavBar(),
+    );
+  }
+}
+
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
 
@@ -21,13 +67,5 @@ class BottomNavBar extends StatelessWidget {
       ],
       currentIndex: 0,
     );
-  }
-}
-
-class WillsWomenPage extends StatelessWidget {
-  const WillsWomenPage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
   }
 }
