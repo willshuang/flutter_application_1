@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'lativ_page.dart';
+import 'ai_gen_page.dart';
 import 'wills_page.dart';
 
 void main() {
@@ -19,8 +19,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const WillsWomenPage(),
-      // home: const LativWomenPage(),
+      home: getHomePage(),
     );
+  }
+
+  Widget getHomePage() {
+    bool isWills = false;
+    if (isWills == true) {
+      return WillsModifyPage();
+    } else {
+      return AiGenPage();
+    }
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 // 主页面
-class LativWomenPage extends StatelessWidget {
-  const LativWomenPage({super.key});
+class AiGenPage extends StatelessWidget {
+  const AiGenPage({super.key});
 
   @override
   Widget build(BuildContext context) {

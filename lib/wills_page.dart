@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class WillsWomenPage extends StatelessWidget {
-  const WillsWomenPage({super.key});
+class WillsModifyPage extends StatelessWidget {
+  const WillsModifyPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +35,8 @@ class WillsWomenPage extends StatelessWidget {
             HotSection(),
             SectionTitle(title: '新品上市'),
             NewSection(),
-            // 特价商品
-            Text('特價商品'),
+            SectionTitle(title: '特價優惠'),
+            SpecialSection(),
           ],
         ),
       ),
@@ -278,11 +278,10 @@ class ProductCard extends StatelessWidget {
                 child: Image.asset(image, fit: BoxFit.cover),
               ),
             ),
-            // 新品标签
-            if (isNew)
+            if (isNew) // 新品标签
               Positioned(
-                top: 8,
-                left: 8,
+                top: 2,
+                left: 2,
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 8,
@@ -296,17 +295,16 @@ class ProductCard extends StatelessWidget {
                     'NEW',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 10,
+                      fontSize: 8,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
-            // 特价标签
             if (originalPrice != null)
               Positioned(
-                top: 8,
-                left: 8,
+                top: 2,
+                left: 2,
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 8,
@@ -320,7 +318,7 @@ class ProductCard extends StatelessWidget {
                     'SALE',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 10,
+                      fontSize: 8,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -343,14 +341,14 @@ class ProductCard extends StatelessWidget {
           children: [
             Text(
               price,
-              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
             ),
             if (originalPrice != null) ...[
               const SizedBox(width: 8),
               Text(
                 originalPrice!,
                 style: const TextStyle(
-                  fontSize: 12,
+                  fontSize: 11,
                   color: Colors.grey,
                   decoration: TextDecoration.lineThrough,
                 ),
@@ -410,6 +408,68 @@ class NewSection extends StatelessWidget {
                         title: product['title'],
                         price: product['price'],
                         isNew: true,
+                      ),
+                    );
+                  }).toList(),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class SpecialSection extends StatelessWidget {
+  const SpecialSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> products = [
+      {
+        'image': 'assets/images/so_00.jpeg',
+        'title': '舒適休閒褲',
+        'price': 'NT\$390',
+        'originalPrice': 'NT\$490',
+      },
+      {
+        'image': 'assets/images/so_01.jpeg',
+        'title': '基本款襯衫',
+        'price': 'NT\$450',
+        'originalPrice': 'NT\$550',
+      },
+      {
+        'image': 'assets/images/so_02.jpeg',
+        'title': '時尚短袖T恤',
+        'price': 'NT\$290',
+        'originalPrice': 'NT\$390',
+      },
+      {
+        'image': 'assets/images/so_03.jpeg',
+        'title': '百搭牛仔褲',
+        'price': 'NT\$590',
+        'originalPrice': 'NT\$690',
+      },
+    ];
+
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Center(
+            child: Wrap(
+              spacing: 16,
+              runSpacing: 16,
+              alignment: WrapAlignment.center,
+              children:
+                  products.map((product) {
+                    return SizedBox(
+                      width: 160,
+                      child: ProductCard(
+                        image: product['image'],
+                        title: product['title'],
+                        price: product['price'],
+                        originalPrice: product['originalPrice'],
+                        isNew: false,
                       ),
                     );
                   }).toList(),
