@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
   }
 
   Widget getHomePage() {
-    bool isWills = false;
+    bool isWills = true;
     if (isWills == true) {
-      return WillsModifyPage();
+      return WillsPage();
     } else {
       return AiGenPage();
     }

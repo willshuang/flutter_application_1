@@ -1,30 +1,13 @@
 import 'package:flutter/material.dart';
 
-class WillsModifyPage extends StatelessWidget {
-  const WillsModifyPage({super.key});
+class WillsPage extends StatelessWidget {
+  const WillsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: const Text(
-          'LATIV 女裝',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search, color: Colors.black),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.shopping_bag_outlined, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
-      ),
+      appBar: WillsAppBar(),
       body: const SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,6 +24,35 @@ class WillsModifyPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: const BottomNavBar(),
+    );
+  }
+}
+
+class WillsAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const WillsAppBar({super.key});
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      title: const Text(
+        'LATIV 女裝',
+        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+      ),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.search, color: Colors.black),
+          onPressed: () {},
+        ),
+        IconButton(
+          icon: const Icon(Icons.shopping_bag_outlined, color: Colors.black),
+          onPressed: () {},
+        ),
+      ],
     );
   }
 }
@@ -180,7 +192,7 @@ class HotSection extends StatelessWidget {
       children: [
         Center(
           child: SizedBox(
-            height: 180,
+            height: 200,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -188,7 +200,7 @@ class HotSection extends StatelessWidget {
               itemBuilder: (context, index) {
                 final product = products[index];
                 return Container(
-                  width: 90,
+                  width: 120,
                   margin: const EdgeInsets.only(right: 16),
                   child: HotItem(product: product),
                 );
